@@ -1,0 +1,74 @@
+<html>
+ <head>
+  <title></title>
+ </head>
+ <body>
+  <h3><u><b>Alerts Browser</b></u></h3>
+  <p width="95%">
+  This help section provides an overview of how to operate the Alerts Browser feature.
+  </p>
+  <img src="AlertsBOverview.png" />
+  <h4><u>Repository/Sorting Bar</u></h4>
+  <p width="95%">
+  The Alerts Browser offers a means of viewing all the alerts which have been raised in response to threats prevented by Crystal. The view is similar to that offered by the main user interface but differs in that alerts can be viewed by repository (category) and can be sorted (for example by Risk or Date). The Repository/Sorting bar appears as follows:
+  </p>
+  <img src="AlertsBSortingBar.png" />
+  <p width="95%">
+  The threat respositories which are available to be viewed are as follows:<br>
+   <p>
+    <b>All</b> - Threats from all categories are displayed in the alerts browser.<br><br>
+    <b>AntiSpray</b> - Threats blocked as a result of anti-heap spray mitigations are displayed in the alerts browser. The issues listed under this repository are always high risk.<br><br>
+    <b>ApiFirewall</b> - Threats blocked as a result of violating the API firewall are displayed in the alerts browser. The issues listed under this repository are generally medium to high risk.<br><br>
+    <b>AudioValidator</b> - Threats involving invalid audio content are displayed in the alerts browser. Crystal uses this repository at present to log instances of broken audio (which can occasionally indicate an attempt to exploit a security flaw). These threats are generally low risk.<br><br>
+    <b>ConnectionMonitor</b> - Blocked HTTP connections are displayed in the alerts browser. HTTP connections are blocked as a result of filter modules (which scan and block or modify Internet traffic) determining that data is not safe for processing. Threats listed here can be low to high risk.<br><br>
+    <b>DfnsInDepth</b> - Threats blocked as a result of violating Defense-in-Depth mechanisms configured to help block the execution of malicious code. The threats listed here vary and are generally high risk.<br><br>
+    <b>HeapMonitor</b> - Threats involving corruption or abuse of application heap memory are displayed in the alerts browser. Threats detailed here are almost always high risk.<br><br>
+    <b>ImageValidator</b> - Threats involving invalid image content are displayed in the alerts browser. Crystal uses this repository at present to log instances of broken images (which can occasionally indicate an attempt to exploit a security flaw). These threats are generally low risk.<br><br>
+    <b>StackMonitor</b> - Threats involving corruption or abuse of application stack memory are displayed in the alerts browser. Threats detailed here are almost always high risk.<br><br>
+    <b>VideoValidator</b> - Threats involving invalid video content are displayed in the alerts browser. Crystal uses this repository at present to log instances of broken videos (which can occasionally indicate an attempt to exploit a security flaw). These threats are generally low risk.<br><br>
+    <b>WebAppMonitor</b> - Threats blocked as a result of attempts to exploit vulnerabilities in web-sites to obtain sensitive data are displayed in the alerts browser. These issues are generally medium risk as they cannot typically lead to malicious code being installed, but may lead to financial or other data compromise.<br><br>
+   </p>
+   Alerts displayed can be sorted by the following methods:<br>
+   <p>
+    <b>Date</b> - Alerts are sorted by date from most recent to least (default display).<br><br>
+    <b>Date (Reverse)</b> - Alerts are sorted with least recent displayed first.<br><br>
+    <b>Risk</b> - Alerts are sorted by risk with most high risk displayed first.<br><br>
+    <b>Risk (Reverse)</b> - Alerts are sorted by risk with least high risk displayed first.<br><br>
+    <b>Process Name</b> - Alerts are sorted by process name (application name).<br><br>
+   </p>
+  </p>
+  Additionally the number of items to display can be configured (the default setting is 500).
+  <h4><u>Individual Alerts</u></h4>
+  <p width="95%">
+  It is possible to view specific information for each threat listed in the Alerts Browser. Double-clicking any alert in the list will display the individual alerts view which appears as follows:
+  </p>
+  <img src="MainUIIndividualAlert.png" />
+  <h4><u>Export Web Report</u></h4>
+  <p width="95%">
+  The Alerts Browser allows simple reports containing all information displayed in the alerts list view to be exported to an HTML report which can be viewed in the web browser. Such information may be useful for diagnostics or may be useful for administrators in reviewing threats to computers which they manage. The Export Web Report button appears as follows:
+  </p>
+  <img src="AlertsBExportWR.png" />
+  <p width="95%">
+  A web report appears as follows:
+  </p>
+  <img src="AlertsBHTMLReport.png" />
+ </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

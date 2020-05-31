@@ -1,0 +1,2093 @@
+[1] Function ASN1ztcharstring_free at 0x402622b3 (to 0x402622bf)
+[2] Function ASN1_CloseDecoder at 0x402622c4 (to 0x402622fd)
+--CODE START--
+	mov     edi, ds:LocalFree
+	test    eax, eax
+	jz      short loc_402622F4
+	test    byte ptr [esi+28h], 10h
+	jnz     loc_40266285
+	push    esi             ; hMem
+	call    edi ; LocalFree
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    4
+--CODE END--
+[3] Function memcpy at 0x40262302 (to 0x40262308)
+[4] Function memset at 0x4026230d (to 0x40262313)
+[5] Function ASN1intx_free at 0x40262318 (to 0x40262331)
+--CODE START--
+	mov     edi, edi        ; ASN1BEREoid_free
+	push    ebp
+	mov     ebp, esp
+	mov     eax, [ebp+arg_0]
+	test    eax, eax
+	jz      short loc_4026232D
+	push    dword ptr [eax+4]; hMem
+	call    ds:LocalFree
+	pop     ebp
+	retn    4
+--CODE END--
+[6] Function sub_40262336 at 0x40262336 (to 0x40262343)
+--CODE START--
+	cmp     ecx, dword_40269000
+	jnz     sub_40268198
+	retn
+--CODE END--
+[7] Function ASN1_CloseEncoder at 0x40262348 (to 0x40262358)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_0]
+	test    ecx, ecx
+	jnz     short loc_40262375
+	pop     ebp
+	retn    4
+--CODE END--
+[8] Function ASN1_FreeEncoded at 0x4026235d (to 0x40262375)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	cmp     [ebp+arg_0], 0
+	jz      short loc_40262371
+	push    [ebp+hMem]      ; hMem
+	call    ds:LocalFree
+	pop     ebp
+	retn    8
+--CODE END--
+[9] Function DllEntryPoint at 0x4026238e (to 0x402623ae)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	cmp     [ebp+fdwReason], 1
+	jnz     short loc_402623A7
+	push    [ebp+hinstDLL]  ; hLibModule
+	call    ds:DisableThreadLibraryCalls
+	call    sub_402623B3
+	xor     eax, eax
+	inc     eax
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[10] Function sub_402623B3 at 0x402623b3 (to 0x4026241d)
+--CODE START--
+	mov     eax, dword ptr [ebp+PerformanceCount+4]
+	xor     eax, dword ptr [ebp+PerformanceCount]
+	xor     esi, eax
+	mov     eax, esi
+	jz      loc_40266D4E
+	mov     dword_40269000, eax
+	pop     esi
+	not     eax
+	mov     dword_40269004, eax
+	leave
+	retn
+--CODE END--
+[11] Function ASN1_CreateModule at 0x40262422 (to 0x4026249a)
+--CODE START--
+	jz      short loc_40262491
+	mov     eax, [ebp+arg_10]
+	mov     [esi+18h], eax
+	mov     eax, [ebp+arg_14]
+	mov     [esi+1Ch], eax
+	pop     edi
+	pop     ebx
+	mov     eax, esi
+	pop     esi
+	pop     ebp
+	retn    24h
+--CODE END--
+[12] Function sub_4026249F at 0x4026249f (to 0x4026250e)
+--CODE START--
+	mov     [ebp+var_18], offset dword_40269010
+	mov     [ebp+var_14], offset aDecodingrules; "DecodingRules"
+	mov     [ebp+var_10], offset dword_40269334
+	call    ds:RegOpenKeyExA
+	test    eax, eax
+	jz      loc_4026618C
+	cmp     [ebp+hKey], 0
+	jnz     loc_402661BD
+	mov     dword_40269008, 1
+	leave
+	retn
+--CODE END--
+[13] Function sub_40262581 at 0x40262581 (to 0x402625d4)
+--CODE START--
+	push    eax             ; uBytes
+	push    40h             ; uFlags
+	call    ds:LocalAlloc
+	mov     edi, eax
+	test    edi, edi
+	jz      loc_402667B0
+	mov     eax, edi
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[14] Function ASN1DecSetError at 0x402625d9 (to 0x402625fa)
+--CODE START--
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_0]
+	mov     eax, [ebp+arg_4]
+	test    ecx, ecx
+	jz      short loc_402625F6
+	mov     edx, [ecx+2Ch]
+	mov     [ecx+18h], eax
+	cmp     ecx, edx
+	jnz     loc_4026360A
+	pop     ebp
+	retn    8
+--CODE END--
+[15] Function ASN1BERDecTag at 0x402625ff (to 0x4026265d)
+--CODE START--
+	shl     edi, 18h
+	or      edi, ebx
+	cmp     [ebp+arg_4], edi
+	jnz     loc_402635EE
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[16] Function ASN1BERDecEndOfContents at 0x40262662 (to 0x402626b2)
+--CODE START--
+	push    esi             ; hMem
+	call    ASN1_CloseDecoder
+	test    ebx, ebx
+	jnz     loc_402669C8
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[17] Function ASN1BERDecLength at 0x402626b7 (to 0x40262714)
+--CODE START--
+	jz      short loc_40262705
+	cmp     dword ptr [ebx], 0
+	jnz     loc_4026571F
+	push    dword ptr [edx]
+	push    esi
+	call    ASN1BERDecCheck
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[18] Function ASN1BERDecCheck at 0x40262720 (to 0x4026274d)
+--CODE START--
+	add     edx, eax
+	cmp     edx, eax
+	jb      loc_402656C9
+	mov     eax, [ecx+10h]
+	add     eax, [ecx+0Ch]
+	cmp     edx, eax
+	ja      loc_402656C9
+	xor     eax, eax
+	inc     eax
+	pop     ebp
+	retn    8
+--CODE END--
+[19] Function ASN1BERDecExplicitTag at 0x40262752 (to 0x402627b2)
+--CODE START--
+	jz      loc_402668C3
+	push    [ebp+arg_C]
+	push    edi
+	push    [ebp+arg_8]
+	push    [ebp+arg_0]
+	push    esi
+	call    sub_402627B7
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    10h
+--CODE END--
+[20] Function sub_402627B7 at 0x402627b7 (to 0x40262806)
+--CODE START--
+	mov     ecx, [edi]
+	mov     eax, [ecx+10h]
+	add     eax, [ecx+0Ch]
+	mov     ecx, [ebp+arg_10]
+	mov     [ecx], eax
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    14h
+--CODE END--
+[21] Function ASN1_CreateDecoder at 0x4026280b (to 0x4026282a)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	push    0               ; char
+	push    [ebp+arg_10]    ; int
+	push    [ebp+arg_C]     ; int
+	push    [ebp+hMem]      ; hMem
+	push    [ebp+arg_4]     ; int
+	push    [ebp+arg_0]     ; int
+	call    ASN1_CreateDecoderEx
+	pop     ebp
+	retn    14h
+--CODE END--
+[22] Function ASN1_CreateDecoderEx at 0x4026282f (to 0x402628fc)
+--CODE START--
+	mov     ecx, [ebp+arg_C]
+	mov     [esi+10h], ecx
+	jnz     loc_4026624A
+	mov     eax, [ebp+arg_4]
+	mov     [eax], esi
+	xor     eax, eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    18h
+--CODE END--
+[23] Function ASN1_Decode at 0x40262901 (to 0x402629f9)
+--CODE START--
+	jl      loc_402635A2
+	mov     eax, [esi+2Ch]
+	mov     ebx, [eax+18h]
+	cmp     ebx, edi
+	jl      loc_40263582
+	pop     edi
+	pop     esi
+	mov     eax, ebx
+	pop     ebx
+	pop     ebp
+	retn    18h
+--CODE END--
+[24] Function ASN1BERDecFlush at 0x402629fe (to 0x40262a1f)
+--CODE START--
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_0]
+	mov     eax, [ecx+20h]
+	sub     eax, [ecx+0Ch]
+	mov     [ecx+14h], eax
+	cmp     eax, [ecx+10h]
+	jb      loc_402656B9
+	xor     eax, eax
+	inc     eax
+	pop     ebp
+	retn    4
+--CODE END--
+[25] Function ASN1_FreeDecoded at 0x40262a24 (to 0x40262a64)
+--CODE START--
+	mov     ecx, [eax+ecx*4]
+	test    ecx, ecx
+	jz      short loc_40262A56
+	push    [ebp+hMem]
+	call    ecx
+	push    [ebp+hMem]      ; hMem
+	push    esi             ; int
+	call    sub_40262A69
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[26] Function sub_40262A69 at 0x40262a69 (to 0x40262a84)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	mov     eax, [ebp+arg_0]
+	cmp     dword ptr [eax+38h], 0
+	jnz     short loc_40262A80
+	push    [ebp+hMem]      ; hMem
+	call    ds:LocalFree
+	pop     ebp
+	retn    8
+--CODE END--
+[27] Function ASN1BERDecPeekTag at 0x40262a98 (to 0x40262afa)
+--CODE START--
+	shl     esi, 18h
+	or      esi, [ebp+arg_0]
+	mov     [eax], esi
+	xor     eax, eax
+	mov     [edi+20h], ebx
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    8
+--CODE END--
+[28] Function sub_40262AFF at 0x40262aff (to 0x40262b24)
+--CODE START--
+	add     edx, eax
+	cmp     edx, eax
+	jb      short loc_40262B47
+	mov     eax, [ecx+10h]
+	add     eax, [ecx+0Ch]
+	cmp     edx, eax
+	ja      short loc_40262B47
+	xor     eax, eax
+	inc     eax
+	pop     ebp
+	retn    8
+--CODE END--
+[29] Function ASN1BERDecNotEndOfContents at 0x40262b29 (to 0x40262b47)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	mov     eax, [ebp+arg_4]
+	test    eax, eax
+	jz      loc_402669D6
+	mov     ecx, [ebp+arg_0]
+	cmp     [ecx+20h], eax
+	sbb     eax, eax
+	neg     eax
+	pop     ebp
+	retn    8
+--CODE END--
+[30] Function sub_40262B54 at 0x40262b54 (to 0x40262b7c)
+--CODE START--
+	cmp     [ebp+arg_4], 0
+	ja      loc_40265C19
+	mov     eax, [ebp+arg_0]
+	jb      short loc_40262B71
+	cmp     eax, 0FFFFFFFFh
+	ja      loc_40265C19
+	mov     ecx, [ebp+arg_8]
+	mov     [ecx], eax
+	xor     eax, eax
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[31] Function sub_40262B99 at 0x40262b99 (to 0x40262bbe)
+--CODE START--
+	mov     ebp, esp
+	push    0Ah
+	push    [ebp+arg_C]
+	push    [ebp+arg_8]
+	push    [ebp+arg_4]
+	push    [ebp+arg_0]
+	call    sub_40262BC3
+	cmp     eax, 0FFFFFFFFh
+	jz      loc_40266C7F
+	pop     ebp
+	retn    10h
+--CODE END--
+[32] Function sub_40262BC3 at 0x40262bc3 (to 0x40262c39)
+--CODE START--
+	jz      loc_40263457
+	mov     eax, [edi+20h]
+	mov     [ebx+4], eax
+	add     [edi+20h], esi
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    14h
+--CODE END--
+[33] Function ASN1BERDecZeroCharString at 0x40262c93 (to 0x40262d53)
+--CODE START--
+	call    ds:memchr
+	add     esp, 0Ch
+	test    eax, eax
+	jnz     loc_40265BAE
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[34] Function ASN1BERDecU32Val at 0x40262d58 (to 0x40262db1)
+--CODE START--
+	jnz     loc_40262EE9
+	mov     eax, [esi+20h]
+	movzx   eax, byte ptr [eax]
+	mov     ecx, [ebp+arg_8]
+	mov     [ecx], eax
+	inc     dword ptr [esi+20h]
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[35] Function sub_40262DB6 at 0x40262db6 (to 0x40262dee)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_4]
+	mov     eax, [ebp+arg_0]
+	mov     edx, 80h
+	cmp     ecx, edx
+	jnb     short loc_40262DD1
+	mov     [eax], cl
+	inc     eax
+	pop     ebp
+	retn    8
+--CODE END--
+[36] Function sub_40262DF3 at 0x40262df3 (to 0x40262e09)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	movzx   eax, [ebp+arg_0]
+	sub     al, 30h
+	mov     cl, 9
+	cmp     cl, al
+	sbb     eax, eax
+	inc     eax
+	pop     ebp
+	retn    4
+--CODE END--
+[37] Function sub_40262E0E at 0x40262e0e (to 0x40262e54)
+--CODE START--
+	lea     eax, [eax+edx-30h]
+	test    esi, esi
+	jnz     short loc_40262E28
+	mov     edx, [ebp+arg_C]
+	mov     [edx], ecx
+	mov     ecx, [ebp+arg_10]
+	mov     [ecx], edi
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    14h
+--CODE END--
+[38] Function ASN1BERDecS32Val at 0x40262e59 (to 0x40262ee9)
+--CODE START--
+	mov     [eax], edi
+	inc     dword ptr [esi+20h]
+	test    ecx, ecx
+	jnz     loc_4026486E
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[39] Function ASN1EncSetError at 0x40262f4d (to 0x40262f6e)
+--CODE START--
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_0]
+	mov     eax, [ebp+arg_4]
+	test    ecx, ecx
+	jz      short loc_40262F6A
+	mov     edx, [ecx+30h]
+	mov     [ecx+18h], eax
+	cmp     ecx, edx
+	jnz     loc_402667F2
+	pop     ebp
+	retn    8
+--CODE END--
+[40] Function ASN1BEREncExplicitTag at 0x40262f73 (to 0x40262fb5)
+--CODE START--
+	jz      short loc_40262FB1
+	mov     eax, [esi+20h]
+	sub     eax, [esi+0Ch]
+	mov     ecx, [ebp+arg_8]
+	mov     [ecx], eax
+	inc     dword ptr [esi+20h]
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[41] Function ASN1BEREncTag at 0x40262fba (to 0x40263017)
+--CODE START--
+	jnz     loc_40266AFF
+	or      bl, byte ptr [ebp+arg_4]
+	mov     [eax], bl
+	inc     dword ptr [esi+20h]
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    8
+--CODE END--
+[42] Function sub_40263031 at 0x40263031 (to 0x402630a3)
+--CODE START--
+	sub     ebx, [esi+20h]
+	add     ebx, edi
+	cmp     ebx, ecx
+	pop     ebx
+	jb      loc_40263F4F
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[43] Function ASN1_Encode at 0x402630a8 (to 0x4026314d)
+--CODE START--
+	call    ASN1BEREncFlush
+	mov     eax, [esi+30h]
+	cmp     [eax+18h], edi
+	jl      loc_402662B6
+	mov     eax, [esi+30h]
+	mov     eax, [eax+18h]
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    18h
+--CODE END--
+[44] Function ASN1BEREncFlush at 0x40263152 (to 0x40263186)
+--CODE START--
+	jz      short loc_4026317C
+	mov     ecx, [eax+20h]
+	cmp     edx, ecx
+	jz      loc_40266153
+	mov     ecx, [eax+20h]
+	sub     ecx, [eax+0Ch]
+	mov     [eax+14h], ecx
+	xor     eax, eax
+	inc     eax
+	pop     ebp
+	retn    4
+--CODE END--
+[45] Function ASN1BEREncLength at 0x4026318b (to 0x402631cb)
+--CODE START--
+	jz      short loc_402631C7
+	push    edi
+	push    esi
+	push    [ebp+arg_0]
+	call    sub_402631D0
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[46] Function sub_402631D0 at 0x402631d0 (to 0x4026320c)
+--CODE START--
+	jz      loc_40263445
+	dec     ecx
+	jz      loc_4026682C
+	dec     ecx
+	jz      loc_4026681F
+	mov     ecx, [eax+20h]
+	mov     [ecx], dl
+	inc     dword ptr [eax+20h]
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[47] Function ASN1BEREncEndOfContents at 0x40263211 (to 0x4026326f)
+--CODE START--
+	cmp     eax, 1
+	jnz     loc_40263403
+	mov     eax, [ebp+var_4]
+	mov     [eax], bl
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    8
+--CODE END--
+[48] Function sub_40263274 at 0x40263274 (to 0x4026329c)
+--CODE START--
+	push    esi
+	test    ecx, ecx
+	jbe     loc_402633E9
+	mov     edx, [ebp+arg_4]
+	mov     esi, [ebp+arg_0]
+	cmp     esi, [edx+eax*4]
+	inc     eax
+	jnb     loc_402633E1
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[49] Function ASN1BEREncBitString at 0x402632a1 (to 0x4026331b)
+--CODE START--
+	mov     esi, [esi+20h]
+	add     esp, 0Ch
+	test    ebx, ebx
+	jnz     loc_40264B25
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     edi
+	pop     ebx
+	pop     ebp
+	retn    10h
+--CODE END--
+[50] Function ASN1DEREncBitString at 0x40263320 (to 0x4026332b)
+[51] Function ASN1_CreateEncoder at 0x40263330 (to 0x402633c3)
+--CODE START--
+	jnz     loc_40264D07
+	test    ebx, ebx
+	jnz     loc_40264CE6
+	mov     eax, [ebp+arg_4]
+	mov     [eax], esi
+	xor     eax, eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    14h
+--CODE END--
+[52] Function ASN1BERDecOctetString at 0x402633c8 (to 0x402633e1)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	push    0
+	push    [ebp+arg_8]
+	push    [ebp+arg_4]
+	push    [ebp+arg_0]
+	call    sub_40262B99
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[53] Function ASN1DEREncOctetString at 0x40263488 (to 0x40263490)
+[54] Function ASN1BEREncOctetString at 0x40263495 (to 0x402634d9)
+--CODE START--
+	push    [ebp+Src]       ; Src
+	push    dword ptr [esi+20h]; Dst
+	call    memcpy
+	add     [esi+20h], edi
+	xor     eax, eax
+	add     esp, 0Ch
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    10h
+--CODE END--
+[55] Function ASN1DecAlloc at 0x402634de (to 0x402634e9)
+[56] Function ASN1BEREncS32 at 0x402634ee (to 0x40263571)
+--CODE START--
+	test    eax, eax
+	jz      loc_40264244
+	mov     eax, [esi+20h]
+	mov     [eax], bl
+	inc     dword ptr [esi+20h]
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[57] Function ASN1BEREncBool at 0x4026361d (to 0x4026365c)
+--CODE START--
+	cmp     [ebp+arg_8], 0
+	mov     ecx, [esi+20h]
+	setz    al
+	dec     al
+	mov     [ecx], al
+	inc     dword ptr [esi+20h]
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[58] Function ASN1objectidentifier_free at 0x40263661 (to 0x40263679)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	mov     eax, [ebp+arg_0]
+	test    eax, eax
+	jz      short loc_40263675
+	push    dword ptr [eax] ; hMem
+	call    ds:LocalFree
+	pop     ebp
+	retn    4
+--CODE END--
+[59] Function sub_4026367E at 0x4026367e (to 0x402636d9)
+--CODE START--
+	mov     esi, edx
+	and     dword ptr [ecx+4], 0
+	dec     esi
+	lea     edx, [ecx+8]
+	mov     [ecx], edx
+	mov     ecx, edx
+	jnz     short loc_402636C3
+	and     dword ptr [ecx], 0
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[60] Function ASN1BERDecObjectIdentifier at 0x402636de (to 0x402637e2)
+--CODE START--
+	inc     esi
+	mov     [ebp+arg_8], esi
+	cmp     eax, [ebp+var_4]
+	jb      short loc_40263763
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[61] Function ASN1BEREncObjectIdentifier at 0x40263814 (to 0x402638bf)
+--CODE START--
+	sub     edi, [ebp+hMem]
+	add     esp, 0Ch
+	add     [ebx+20h], edi
+	push    [ebp+hMem]      ; hMem
+	call    ds:LocalFree
+	mov     eax, [ebp+arg_4]
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[62] Function sub_402638C4 at 0x402638c4 (to 0x402638db)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_0]
+	xor     eax, eax
+	test    ecx, ecx
+	jz      short loc_402638D7
+	mov     ecx, [ecx]
+	inc     eax
+	jmp     short loc_402638CE
+	pop     ebp
+	retn    4
+--CODE END--
+[63] Function sub_40263928 at 0x40263928 (to 0x4026392f)
+[64] Function ASN1DEREncGeneralizedTime at 0x4026392f (to 0x40263990)
+--CODE START--
+	push    [ebp+var_28]
+	push    [ebp+arg_4]
+	push    esi
+	call    ASN1DEREncOctetString
+	mov     ecx, [ebp+var_4]
+	pop     edi
+	xor     ecx, ebp
+	pop     esi
+	call    sub_40262336
+	leave
+	retn    0Ch
+--CODE END--
+[65] Function sub_40263995 at 0x40263995 (to 0x40263a47)
+--CODE START--
+	push    20h
+	pop     eax
+	sub     eax, [ebp+DstBuf]
+	mov     [ecx], eax
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[66] Function sub_40263A66 at 0x40263a66 (to 0x40263b48)
+--CODE START--
+	mov     [eax], ecx
+	mov     eax, [ebp+arg_10]
+	test    eax, eax
+	jz      short loc_40263B33
+	mov     [eax], ebx
+	pop     ebx
+	mov     eax, [ebp+arg_0]
+	pop     edi
+	pop     esi
+	leave
+	retn    18h
+--CODE END--
+[67] Function sub_40263B4D at 0x40263b4d (to 0x40263c28)
+--CODE START--
+	mov     [eax], ecx
+	mov     eax, [ebp+arg_C]
+	test    eax, eax
+	jz      short loc_40263C08
+	mov     [eax], ebx
+	pop     edi
+	pop     ebx
+	mov     eax, [ebp+var_4]
+	pop     esi
+	leave
+	retn
+--CODE END--
+[68] Function sub_40263C2D at 0x40263c2d (to 0x40263c55)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	xor     eax, eax
+	test    [ebp+arg_8], 100h
+	jnz     loc_40266550
+	cmp     ecx, eax
+	jz      short loc_40263C4E
+	cmp     ecx, [ebp+arg_4]
+	ja      short loc_40263C4E
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[69] Function sub_40263C5A at 0x40263c5a (to 0x40263d1f)
+--CODE START--
+	mov     eax, [edi+20h]
+	mov     [esi+4], eax
+	mov     eax, [ebp+Size]
+	add     [edi+20h], eax
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    10h
+--CODE END--
+[70] Function sub_40263D24 at 0x40263d24 (to 0x40263d43)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	mov     eax, [ebp+arg_0]
+	cmp     eax, [ebp+arg_4]
+	jb      loc_40265C39
+	sub     eax, [ebp+arg_4]
+	mov     ecx, [ebp+arg_8]
+	mov     [ecx], eax
+	xor     eax, eax
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[71] Function sub_40263D48 at 0x40263d48 (to 0x40263d68)
+--CODE START--
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_0]
+	mov     eax, [ebp+arg_4]
+	add     eax, ecx
+	cmp     eax, ecx
+	jb      loc_40265C29
+	mov     ecx, [ebp+arg_8]
+	mov     [ecx], eax
+	xor     eax, eax
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[72] Function ASN1BERDecBitString at 0x40263db9 (to 0x40263dd2)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	push    0               ; int
+	push    [ebp+arg_8]     ; int
+	push    [ebp+Size]      ; Size
+	push    [ebp+hMem]      ; hMem
+	call    sub_40263C5A
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[73] Function ASN1BEREncU32 at 0x40263e50 (to 0x40263ee6)
+--CODE START--
+	jnz     short loc_40263EAC
+	mov     eax, [esi+20h]
+	mov     [eax], bl
+	inc     dword ptr [esi+20h]
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[74] Function ASN1BEREncSX at 0x40263eeb (to 0x40263f4f)
+--CODE START--
+	push    dword ptr [ebx+20h]; Dst
+	call    memcpy
+	add     [ebx+20h], edi
+	xor     eax, eax
+	add     esp, 0Ch
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[75] Function ASN1intx_setuint32 at 0x40263f89 (to 0x4026400c)
+--CODE START--
+	push    eax             ; Dst
+	call    memcpy
+	add     esp, 0Ch
+	mov     ecx, [ebp+var_4]
+	pop     edi
+	pop     esi
+	xor     ecx, ebp
+	pop     ebx
+	call    sub_40262336
+	leave
+	retn    8
+--CODE END--
+[76] Function ASN1BERDecGeneralizedTime at 0x40264011 (to 0x4026406d)
+--CODE START--
+	mov     edi, eax
+	call    sub_40262A69
+	test    edi, edi
+	pop     edi
+	pop     esi
+	jz      loc_40266021
+	xor     eax, eax
+	inc     eax
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[77] Function sub_40264072 at 0x40264072 (to 0x40264229)
+--CODE START--
+	mov     al, byte ptr [ebp+var_8]
+	mov     [esi+0Ah], al
+	xor     eax, eax
+	mov     [esi+6], bl
+	mov     [esi+0Ch], di
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[78] Function ASN1BERDecSXVal at 0x4026428d (to 0x402642f7)
+--CODE START--
+	push    dword ptr [esi+20h]; Src
+	push    eax             ; Dst
+	call    memcpy
+	mov     eax, [ebp+Size]
+	add     [esi+20h], eax
+	xor     eax, eax
+	add     esp, 0Ch
+	inc     eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[79] Function ASN1BERDecEoid at 0x402642fc (to 0x40264375)
+--CODE START--
+	push    eax             ; Dst
+	call    memcpy
+	add     esp, 0Ch
+	add     [esi+20h], ebx
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[80] Function sub_4026437A at 0x4026437a (to 0x4026439b)
+--CODE START--
+	push    ebp
+	mov     ebp, esp
+	mov     ecx, [ebp+arg_0]
+	mov     eax, 0FFFFh
+	cmp     ecx, eax
+	ja      loc_40266ADB
+	mov     eax, [ebp+arg_4]
+	mov     [eax], cx
+	xor     eax, eax
+	pop     ebp
+	retn    8
+--CODE END--
+[81] Function ASN1BERDecBitString2 at 0x402643a0 (to 0x402643b9)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	push    1               ; int
+	push    [ebp+arg_8]     ; int
+	push    [ebp+Size]      ; Size
+	push    [ebp+hMem]      ; hMem
+	call    sub_40263C5A
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[82] Function ASN1DecRealloc at 0x402643be (to 0x40264421)
+--CODE START--
+	push    eax             ; uBytes
+	push    40h             ; uFlags
+	call    ds:LocalAlloc
+	mov     edi, eax
+	test    edi, edi
+	jz      loc_402667E2
+	mov     eax, edi
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[83] Function ASN1BERDecBool at 0x40264426 (to 0x40264473)
+--CODE START--
+	mov     ecx, [esi+20h]
+	cmp     byte ptr [ecx], 0
+	mov     edx, [ebp+arg_8]
+	setnz   cl
+	mov     [edx], cl
+	add     [esi+20h], eax
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[84] Function ASN1BERDecOpenType2 at 0x40264478 (to 0x4026448e)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	push    1
+	push    [ebp+arg_4]
+	push    [ebp+arg_0]
+	call    sub_40264493
+	pop     ebp
+	retn    8
+--CODE END--
+[85] Function sub_40264493 at 0x40264493 (to 0x4026452c)
+--CODE START--
+	cmp     [ebp+arg_8], 0
+	mov     [esi], eax
+	jz      loc_402654C5
+	mov     [esi+4], ebx
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[86] Function ASN1BERDecOctetString2 at 0x40264531 (to 0x4026454a)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	push    1
+	push    [ebp+arg_8]
+	push    [ebp+arg_4]
+	push    [ebp+arg_0]
+	call    sub_40262B99
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[87] Function ASN1BERDecUTCTime at 0x4026454f (to 0x402645ab)
+--CODE START--
+	mov     edi, eax
+	call    sub_40262A69
+	test    edi, edi
+	pop     edi
+	pop     esi
+	jz      loc_4026604B
+	xor     eax, eax
+	inc     eax
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[88] Function sub_402645B0 at 0x402645b0 (to 0x402646d7)
+--CODE START--
+	dec     [ebp+arg_0]
+	mov     byte ptr [esi+6], 1
+	cmp     [ebp+arg_0], ebx
+	ja      loc_40266540
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[89] Function ASN1BERDecCharString at 0x402646dc (to 0x402647bd)
+--CODE START--
+	jz      loc_40265EC3
+	inc     ecx
+	cmp     ecx, edx
+	jb      short loc_40264794
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[90] Function ASN1intx2uint32 at 0x402647c2 (to 0x40264818)
+--CODE START--
+	movzx   edx, byte ptr [ecx-3]
+	shl     eax, 8
+	or      eax, edx
+	movzx   edx, byte ptr [ecx-2]
+	movzx   ecx, byte ptr [ecx-1]
+	shl     eax, 8
+	or      eax, edx
+	shl     eax, 8
+	or      eax, ecx
+	pop     ebp
+	retn    4
+--CODE END--
+[91] Function ASN1intxisuint32 at 0x4026481d (to 0x40264843)
+--CODE START--
+	cmp     byte ptr [ecx], 7Fh
+	ja      loc_40266185
+	push    eax
+	call    ASN1intx_uoctets
+	push    4
+	pop     ecx
+	cmp     ecx, eax
+	sbb     eax, eax
+	inc     eax
+	pop     ebp
+	retn    4
+--CODE END--
+[92] Function ASN1intx_uoctets at 0x40264848 (to 0x4026486e)
+--CODE START--
+	mov     ecx, [ebp+arg_0]
+	mov     eax, [ecx]
+	xor     edx, edx
+	test    eax, eax
+	jbe     short loc_40264861
+	mov     ecx, [ecx+4]
+	cmp     byte ptr [ecx+edx], 0
+	jz      short loc_40264867
+	sub     eax, edx
+	pop     ebp
+	retn    4
+--CODE END--
+[93] Function ASN1DEREncUTF8String at 0x402648ea (to 0x402648f2)
+[94] Function ASN1BEREncUTF8String at 0x402648f7 (to 0x40264988)
+--CODE START--
+	push    [ebp+arg_0]     ; int
+	call    ASN1BEREncOctetString
+	mov     esi, eax
+	push    [ebp+Src]       ; hMem
+	call    ds:LocalFree
+	mov     eax, esi
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    10h
+--CODE END--
+[95] Function ASN1_SetEncoderOption at 0x4026498d (to 0x402649ca)
+--CODE START--
+	mov     ecx, [edx]
+	sub     ecx, 101h
+	jnz     loc_40266202
+	mov     ecx, [edx+4]
+	mov     [eax+28h], ecx
+	push    esi
+	push    eax
+	call    ASN1EncSetError
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[96] Function ASN1DEREncBeginBlk at 0x40264a0c (to 0x40264a65)
+--CODE START--
+	mov     [esi+14h], eax
+	test    eax, eax
+	jz      loc_40266A01
+	mov     eax, [ebp+arg_8]
+	mov     [eax], esi
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[97] Function ASN1DEREncEndBlk at 0x40264a6a (to 0x40264ad0)
+--CODE START--
+	call    edi ; LocalFree
+	push    dword ptr [esi+8]
+	call    ASN1_CloseEncoder
+	push    esi             ; hMem
+	call    edi ; LocalFree
+	mov     eax, [ebp+hMem]
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    4
+--CODE END--
+[98] Function ASN1BEREncEoid at 0x40264ad5 (to 0x40264b25)
+--CODE START--
+	push    dword ptr [edi+20h]; Dst
+	call    memcpy
+	movzx   eax, word ptr [esi]
+	add     esp, 0Ch
+	add     [edi+20h], eax
+	pop     esi
+	mov     eax, ebx
+	pop     ebx
+	pop     edi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[99] Function ASN1BEREncChar16String at 0x40264b4d (to 0x40264bb1)
+--CODE START--
+	inc     dword ptr [esi+20h]
+	inc     eax
+	inc     eax
+	test    edi, edi
+	jnz     short loc_40264B88
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     edi
+	pop     ebp
+	retn    10h
+--CODE END--
+[100] Function ASN1DEREncChar16String at 0x40264bb6 (to 0x40264bbe)
+[101] Function ASN1BERDecChar16String at 0x40264bc3 (to 0x40264cc7)
+--CODE START--
+	inc     ecx
+	inc     ecx
+	cmp     [ebp+arg_8], edx
+	jb      short loc_40264C96
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[102] Function ASN1DEREncFlushBlkElement at 0x40264d25 (to 0x40264d99)
+--CODE START--
+	xor     eax, eax
+	mov     [edi+20h], eax
+	mov     [edi+0Ch], eax
+	mov     [edi+14h], eax
+	mov     [edi+10h], eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    4
+--CODE END--
+[103] Function ASN1DEREncNewBlkElement at 0x40264d9e (to 0x40264deb)
+--CODE START--
+	mov     [ecx+28h], eax
+	mov     eax, [ebx]
+	mov     ecx, [ebp+arg_4]
+	mov     [ecx], eax
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    8
+--CODE END--
+[104] Function ASN1BEREncOpenType at 0x40264e44 (to 0x40264e7f)
+--CODE START--
+	push    dword ptr [edi+20h]; Dst
+	call    memcpy
+	mov     eax, [esi]
+	add     [edi+20h], eax
+	xor     eax, eax
+	add     esp, 0Ch
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[105] Function ASN1BEREncCheck at 0x40264e84 (to 0x40264e8f)
+[106] Function ASN1BERDecObjectIdentifier2 at 0x40264e94 (to 0x40264f99)
+--CODE START--
+	inc     eax
+	mov     [ebp+arg_8], eax
+	cmp     [ebp+arg_4], edi
+	jb      short loc_40264F11
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[107] Function sub_40264F9E at 0x40264f9e (to 0x4026502a)
+--CODE START--
+	dec     ecx
+	dec     edi
+	jnz     short loc_4026500A
+	mov     ecx, [ebp+var_4]
+	and     byte ptr [esi-1], 7Fh
+	pop     edi
+	xor     ecx, ebp
+	pop     esi
+	call    sub_40262336
+	leave
+	retn    10h
+--CODE END--
+[108] Function sub_4026502A at 0x4026502a (to 0x40265047)
+--CODE START--
+	mov     eax, [esp+arg_4]
+	mov     ecx, [esp+arg_C]
+	or      ecx, eax
+	mov     ecx, [esp+arg_8]
+	jnz     loc_40265946
+	mov     eax, [esp+arg_0]
+	mul     ecx
+	retn    10h
+--CODE END--
+[109] Function ASN1BERDotVal2Eoid at 0x4026505a (to 0x402651fb)
+--CODE START--
+	mov     esi, [ebp+arg_8]
+	mov     eax, [ebp+var_8]
+	sub     ax, [esi+4]
+	mov     [esi], ax
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     edi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[110] Function sub_40265200 at 0x40265200 (to 0x40265233)
+--CODE START--
+	cmp     ecx, [ebp+arg_4]
+	jb      loc_40266AEB
+	ja      short loc_40265225
+	cmp     eax, [ebp+arg_0]
+	jb      loc_40266AEB
+	mov     edx, [ebp+arg_10]
+	mov     [edx], eax
+	mov     [edx+4], ecx
+	xor     eax, eax
+	pop     ebp
+	retn    14h
+--CODE END--
+[111] Function ASN1BEREoid2DotVal at 0x40265238 (to 0x40265489)
+--CODE START--
+	xor     eax, eax
+	add     esp, 0Ch
+	inc     eax
+	pop     esi
+	pop     ebx
+	mov     ecx, [ebp+var_4]
+	xor     ecx, ebp
+	pop     edi
+	call    sub_40262336
+	leave
+	retn    0Ch
+--CODE END--
+[112] Function sub_40265489 at 0x40265489 (to 0x402654b2)
+--CODE START--
+	mov     ecx, [esp+8+arg_8]
+	mov     eax, [esp+8+arg_4]
+	xor     edx, edx
+	div     ecx
+	mov     ebx, eax
+	mov     eax, [esp+8+arg_0]
+	div     ecx
+	mov     edx, ebx
+	pop     esi
+	pop     ebx
+	retn    10h
+--CODE END--
+[113] Function ASN1BERDecOpenType at 0x402654f0 (to 0x40265506)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	push    0
+	push    [ebp+arg_4]
+	push    [ebp+arg_0]
+	call    sub_40264493
+	pop     ebp
+	retn    8
+--CODE END--
+[114] Function sub_402655AA at 0x402655aa (to 0x402655ec)
+--CODE START--
+	inc     edx
+	test    eax, eax
+	jnz     short loc_402655DE
+	test    esi, esi
+	jnz     short loc_402655C9
+	jmp     short loc_402655E5
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    10h
+--CODE END--
+[115] Function ASN1BEREncObjectIdentifier2 at 0x40265615 (to 0x402656b9)
+--CODE START--
+	sub     edi, [ebp+hMem]
+	add     esp, 0Ch
+	add     [esi+20h], edi
+	push    [ebp+hMem]      ; hMem
+	call    ds:LocalFree
+	mov     eax, [ebp+arg_0]
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[116] Function ASN1BEREncRemoveZeroBits at 0x40265772 (to 0x402657dc)
+--CODE START--
+	mov     esi, 80h
+	sar     esi, cl
+	test    edx, esi
+	jz      short loc_402657D6
+	mov     [edi], eax
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     edi
+	pop     ebp
+	retn    8
+--CODE END--
+[117] Function ASN1bitstring_cmp at 0x402657e1 (to 0x40265876)
+--CODE START--
+	movzx   ecx, byte ptr [edx+ecx]
+	and     eax, esi
+	and     ecx, esi
+	sub     eax, ecx
+	jnz     short loc_4026586A
+	mov     eax, [ebp+var_8]
+	sub     eax, [ebp+var_4]
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[118] Function ASN1BEREncRemoveZeroBits2 at 0x40265885 (to 0x40265900)
+--CODE START--
+	jz      short loc_402658FA
+	cmp     eax, edi
+	pop     esi
+	jb      loc_4026614C
+	mov     [ebx], eax
+	xor     eax, eax
+	inc     eax
+	pop     edi
+	pop     ebx
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[119] Function sub_40265961 at 0x40265961 (to 0x402659d6)
+--CODE START--
+	sbb     eax, 0
+	mov     edx, dword ptr [esp+20h+var_10+4]
+	sbb     edx, 0
+	jmp     short locret_402659D4
+	mov     edx, dword ptr [esp+20h+var_10+4]
+	test    edx, 7FFFFFFFh
+	jnz     short loc_40265984
+	fstp    [esp+20h+var_8]
+	fstp    [esp+20h+var_8]
+	leave
+	retn
+--CODE END--
+[120] Function ASN1BERDecNull at 0x40266d97 (to 0x40266ddd)
+--CODE START--
+	cmp     [ebp+arg_4], 0
+	jnz     short loc_40266DCA
+	xor     eax, eax
+	inc     eax
+	jmp     short loc_40266DD9
+	push    0FFFFFC15h
+	push    [ebp+arg_0]
+	call    ASN1DecSetError
+	xor     eax, eax
+	pop     ebp
+	retn    8
+--CODE END--
+[121] Function ASN1BERDecS8Val at 0x40266de2 (to 0x40266e38)
+--CODE START--
+	jmp     short loc_40266E33
+	sbb     eax, eax
+	neg     eax
+	add     eax, 0FFFFFC14h
+	push    eax
+	push    esi
+	call    ASN1DecSetError
+	xor     eax, eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[122] Function ASN1BERDecS16Val at 0x40266e3d (to 0x40266ebd)
+--CODE START--
+	cmp     [ebp+arg_4], 1
+	sbb     eax, eax
+	neg     eax
+	add     eax, 0FFFFFC14h
+	push    eax
+	push    esi
+	call    ASN1DecSetError
+	xor     eax, eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[123] Function ASN1BERDecU8Val at 0x40266ec2 (to 0x40266f36)
+--CODE START--
+	cmp     [ebp+arg_4], 1
+	sbb     eax, eax
+	neg     eax
+	add     eax, 0FFFFFC14h
+	push    eax
+	push    esi
+	call    ASN1DecSetError
+	xor     eax, eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[124] Function ASN1BERDecU16Val at 0x40266f3b (to 0x40266fe3)
+--CODE START--
+	cmp     [ebp+arg_4], 1
+	sbb     eax, eax
+	neg     eax
+	add     eax, 0FFFFFC14h
+	push    eax
+	push    esi
+	call    ASN1DecSetError
+	xor     eax, eax
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[125] Function ASN1BERDecZeroChar16String at 0x40266fe8 (to 0x40267000)
+--CODE START--
+	mov     edi, edi        ; ASN1BERDecZeroChar16String
+	push    ebp
+	mov     ebp, esp
+	push    0FFFFFBE4h
+	push    [ebp+arg_0]
+	call    ASN1DecSetError
+	xor     eax, eax
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[126] Function ASN1BERDecSkip at 0x40267005 (to 0x402670d0)
+--CODE START--
+	lea     eax, [ebp+arg_0]
+	push    eax
+	push    esi
+	call    ASN1BERDecLength
+	test    eax, eax
+	jnz     short loc_40267062
+	xor     eax, eax
+	pop     edi
+	pop     esi
+	leave
+	retn    4
+--CODE END--
+[127] Function ASN1BERDecChar32String at 0x402670d5 (to 0x4026731b)
+--CODE START--
+	mov     [esi+4], edi
+	push    ebx
+	call    sub_402627B7
+	test    eax, eax
+	jnz     loc_402671CF
+	xor     eax, eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[128] Function ASN1BERDecZeroMultibyteString at 0x40267320 (to 0x4026732b)
+[129] Function ASN1BERDecMultibyteString at 0x40267330 (to 0x4026733b)
+[130] Function ASN1BEREncChar32String at 0x40267340 (to 0x402673cc)
+--CODE START--
+	add     eax, 4
+	test    edi, edi
+	jnz     short loc_4026738A
+	xor     eax, eax
+	inc     eax
+	jmp     short loc_402673C6
+	xor     eax, eax
+	pop     esi
+	pop     edi
+	pop     ebp
+	retn    10h
+--CODE END--
+[131] Function ASN1BEREncZeroMultibyteString at 0x402673d1 (to 0x402673f9)
+--CODE START--
+	cmp     [ebp+Src], eax
+	jz      short loc_402673E6
+	push    [ebp+Src]       ; lpString
+	call    ds:lstrlenA
+	push    [ebp+Src]       ; Src
+	push    eax             ; Size
+	push    [ebp+arg_4]     ; int
+	push    [ebp+arg_0]     ; int
+	call    ASN1BEREncOctetString
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[132] Function ASN1BEREncMultibyteString at 0x402673fe (to 0x4026741a)
+--CODE START--
+	mov     edi, edi
+	push    ebp
+	mov     ebp, esp
+	mov     eax, [ebp+arg_8]
+	push    dword ptr [eax+4]; Src
+	push    dword ptr [eax] ; Size
+	push    [ebp+arg_4]     ; int
+	push    [ebp+arg_0]     ; int
+	call    ASN1BEREncOctetString
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[133] Function ASN1BEREncNull at 0x4026741f (to 0x40267445)
+--CODE START--
+	push    [ebp+arg_0]
+	call    ASN1BEREncTag
+	test    eax, eax
+	jz      short loc_4026743F
+	push    0
+	push    [ebp+arg_0]
+	call    ASN1BEREncLength
+	jmp     short loc_40267441
+	xor     eax, eax
+	pop     ebp
+	retn    8
+--CODE END--
+[134] Function ASN1DEREncUTCTime at 0x4026744a (to 0x402674ad)
+--CODE START--
+	push    esi
+	call    ASN1DEREncOctetString
+	jmp     short loc_4026749D
+	xor     eax, eax
+	mov     ecx, [ebp+var_4]
+	pop     edi
+	xor     ecx, ebp
+	pop     esi
+	call    sub_40262336
+	leave
+	retn    0Ch
+--CODE END--
+[135] Function ASN1BEREncUTCTime at 0x402674b2 (to 0x402674ba)
+[136] Function sub_402674BF at 0x402674bf (to 0x402675e0)
+--CODE START--
+	and     bl, [edi+1]
+	mov     cl, 8
+	sub     cl, dl
+	shr     bl, cl
+	or      bl, al
+	mov     [esi], bl
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    10h
+--CODE END--
+[137] Function ASN1intx2int32 at 0x402675fd (to 0x4026768a)
+--CODE START--
+	movzx   ecx, byte ptr [ecx+1]
+	shl     ax, 8
+	cwde
+	or      eax, ecx
+	jmp     short loc_40267686
+	mov     eax, [eax+4]
+	movsx   eax, byte ptr [eax]
+	jmp     short loc_40267686
+	xor     eax, eax
+	pop     ebp
+	retn    4
+--CODE END--
+[138] Function ASN1uint32_uoctets at 0x4026768f (to 0x402676ba)
+--CODE START--
+	jb      short loc_402676AB
+	cmp     [ebp+arg_0], 1000000h
+	sbb     eax, eax
+	add     eax, 4
+	jmp     short loc_402676B6
+	cmp     [ebp+arg_0], 100h
+	sbb     eax, eax
+	inc     eax
+	inc     eax
+	pop     ebp
+	retn    4
+--CODE END--
+[139] Function ASN1_GetEncoderOption at 0x402676bf (to 0x402676fd)
+--CODE START--
+	push    esi
+	mov     esi, [edx+28h]
+	mov     [eax+4], esi
+	pop     esi
+	push    ecx
+	push    edx
+	call    ASN1EncSetError
+	jmp     short loc_402676F9
+	mov     eax, 0FFFFFC0Fh
+	pop     ebp
+	retn    8
+--CODE END--
+[140] Function ASN1_CloseEncoder2 at 0x40267702 (to 0x40267723)
+--CODE START--
+	push    esi
+	mov     esi, [ebp+arg_0]
+	test    esi, esi
+	jz      short loc_4026771E
+	push    dword ptr [esi+0Ch]; hMem
+	call    ds:LocalFree
+	push    esi
+	call    ASN1_CloseEncoder
+	pop     esi
+	pop     ebp
+	retn    4
+--CODE END--
+[141] Function ASN1_SetDecoderOption at 0x40267728 (to 0x402677aa)
+--CODE START--
+	jmp     short loc_40267797
+	mov     ecx, [ecx+4]
+	mov     [eax+24h], ecx
+	push    esi
+	push    eax
+	call    ASN1DecSetError
+	jmp     short loc_402677A5
+	mov     eax, 0FFFFFC0Fh
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[142] Function ASN1_GetDecoderOption at 0x402677af (to 0x402677f8)
+--CODE START--
+	jmp     short loc_402677E2
+	mov     ecx, [edx+24h]
+	mov     [eax+4], ecx
+	push    esi
+	push    edx
+	call    ASN1DecSetError
+	pop     esi
+	jmp     short loc_402677F4
+	mov     eax, 0FFFFFC0Fh
+	pop     ebp
+	retn    8
+--CODE END--
+[143] Function sub_402677FD at 0x402677fd (to 0x4026785e)
+--CODE START--
+	test    edi, edi
+	jnz     short loc_40267817
+	mov     eax, [ebp+arg_0]
+	fld     [ebp+var_14]
+	mov     [eax], esi
+	mov     eax, [ebp+arg_4]
+	mov     [eax], edi
+	pop     edi
+	pop     esi
+	leave
+	retn    8
+--CODE END--
+[144] Function sub_4026786D at 0x4026786d (to 0x40267892)
+--CODE START--
+	and     eax, 0FFh
+	push    ecx             ; Size
+	push    eax             ; Val
+	mov     eax, [ebp+arg_0]
+	inc     eax
+	push    eax             ; Dst
+	call    memset
+	add     esp, 0Ch
+	xor     eax, eax
+	pop     ebp
+	retn    4
+--CODE END--
+[145] Function sub_40267897 at 0x40267897 (to 0x4026791c)
+--CODE START--
+	test    edi, edi
+	jbe     short loc_40267916
+	test    [ebp+arg_4], 800h
+	jz      short loc_40267916
+	mov     eax, [ebp+arg_0]
+	mov     [eax], esi
+	mov     [ebx], edi
+	mov     byte ptr [esi], 0
+	xor     eax, eax
+	leave
+	retn    8
+--CODE END--
+[146] Function sub_40267921 at 0x40267921 (to 0x40267a5b)
+--CODE START--
+	mov     eax, [ebp+arg_C]
+	mov     [eax], edi
+	xor     eax, eax
+	inc     eax
+	jmp     short loc_40267A54
+	xor     eax, eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    10h
+--CODE END--
+[147] Function sub_40267A7A at 0x40267a7a (to 0x40267af8)
+--CODE START--
+	mov     edi, eax
+	test    edi, edi
+	jnz     short loc_40267AB9
+	push    0FFFFFC12h
+	push    esi
+	call    ASN1DecSetError
+	mov     eax, edi
+	pop     edi
+	pop     esi
+	pop     ebp
+	retn    0Ch
+--CODE END--
+[148] Function ASN1DEREncChar32String at 0x40267afd (to 0x40267b08)
+[149] Function ASN1DEREncZeroMultibyteString at 0x40267b0d (to 0x40267b18)
+[150] Function ASN1DEREncMultibyteString at 0x40267b1d (to 0x40267b28)
+[151] Function ASN1BEREncGeneralizedTime at 0x40267b2d (to 0x40267b38)
+[152] Function ASN1CEREncBeginBlk at 0x40267b3d (to 0x40267b48)
+[153] Function ASN1CEREncFlushBlkElement at 0x40267b4d (to 0x40267b58)
+[154] Function ASN1CEREncNewBlkElement at 0x40267b5d (to 0x40267b68)
+[155] Function ASN1CEREncEndBlk at 0x40267b6d (to 0x40267b78)
+[156] Function ASN1BERDecUTF8String at 0x40267b7d (to 0x40267cb1)
+--CODE START--
+	cmp     [ebp+cbMultiByte], esi
+	jz      short loc_40267C8F
+	lea     eax, [ebp+cbMultiByte]
+	push    eax
+	call    ASN1intx_free
+	xor     eax, eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    0Ch
+--CODE END--
+[157] Function ASN1objectidentifier_cmp at 0x40267cb6 (to 0x40267d0b)
+--CODE START--
+	mov     edi, [edi]
+	inc     eax
+	cmp     eax, ecx
+	jb      short loc_40267CE7
+	mov     eax, ebx
+	sub     eax, [ebp+arg_0]
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    8
+--CODE END--
+[158] Function ASN1objectidentifier2_cmp at 0x40267d10 (to 0x40267d76)
+--CODE START--
+	inc     ecx
+	cmp     cx, di
+	jb      short loc_40267D3F
+	movzx   ecx, word ptr [ebp+arg_0]
+	movzx   eax, word ptr [ebp+var_4]
+	sub     eax, ecx
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    8
+--CODE END--
+[159] Function ASN1octetstring_cmp at 0x40267d7b (to 0x40267dbb)
+--CODE START--
+	jz      short loc_40267DAC
+	sbb     eax, eax
+	sbb     eax, 0FFFFFFFFh
+	test    eax, eax
+	jnz     short loc_40267DB5
+	mov     eax, ebx
+	sub     eax, [ebp+arg_0]
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    8
+--CODE END--
+[160] Function ASN1ztcharstring_cmp at 0x40267dc0 (to 0x40267dea)
+--CODE START--
+	cmp     [ebp+arg_4], eax
+	jz      short loc_40267DD8
+	pop     ebp
+	jmp     ds:lstrcmpA
+	xor     ecx, ecx
+	cmp     [ebp+arg_0], eax
+	setnz   cl
+	lea     ecx, [ecx+ecx-1]
+	mov     eax, ecx
+	pop     ebp
+	retn    8
+--CODE END--
+[161] Function ASN1ztchar16string_cmp at 0x40267def (to 0x40267e19)
+--CODE START--
+	cmp     [ebp+arg_4], eax
+	jz      short loc_40267E07
+	pop     ebp
+	jmp     ds:lstrcmpW
+	xor     ecx, ecx
+	cmp     [ebp+arg_0], eax
+	setnz   cl
+	lea     ecx, [ecx+ecx-1]
+	mov     eax, ecx
+	pop     ebp
+	retn    8
+--CODE END--
+[162] Function ASN1ztchar32string_cmp at 0x40267e1e (to 0x40267e66)
+--CODE START--
+	pop     esi
+	mov     eax, [eax]
+	sub     eax, [edx]
+	jmp     short loc_40267E62
+	xor     ecx, ecx
+	test    eax, eax
+	setnz   cl
+	lea     ecx, [ecx+ecx-1]
+	mov     eax, ecx
+	pop     ebp
+	retn    8
+--CODE END--
+[163] Function ASN1charstring_cmp at 0x40267e6b (to 0x40267eb9)
+--CODE START--
+	jnz     short loc_40267EAD
+	inc     ecx
+	cmp     ecx, [ebp+arg_0]
+	jb      short loc_40267E94
+	mov     eax, edi
+	sub     eax, ebx
+	pop     edi
+	pop     esi
+	pop     ebx
+	pop     ebp
+	retn    8
+--CODE END--
+[164] Function ASN1char16string_cmp at 0x40267ebe (to 0x40267f25)
+--CODE START--
+	mov     ebx, [ebp+arg_4]
+	inc     esi
+	inc     esi
+	cmp     [ebp+arg_0], ebx
+	jb      short loc_40267EF4
+	sub     eax, [ebp+var_4]
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    8
+--CODE END--
+[165] Function ASN1char32string_cmp at 0x40267f2a (to 0x40267f8d)
+--CODE START--
+	inc     [ebp+arg_0]
+	mov     ebx, [ebp+arg_4]
+	add     edx, 4
+	cmp     [ebp+arg_0], ebx
+	jb      short loc_40267F60
+	sub     eax, [ebp+var_4]
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    8
+--CODE END--
+[166] Function ASN1utctime_cmp at 0x40267f92 (to 0x40267ffe)
+--CODE START--
+	cmp     cl, dl
+	jnz     short loc_40267FB8
+	movzx   eax, byte ptr [eax+5]
+	movzx   ecx, byte ptr [esi+5]
+	sub     eax, ecx
+	jmp     short loc_40267FF9
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[167] Function ASN1generalizedtime_cmp at 0x40268003 (to 0x40268084)
+--CODE START--
+	cmp     cl, dl
+	jnz     short loc_40268040
+	movzx   eax, word ptr [eax+8]
+	movzx   ecx, word ptr [esi+8]
+	sub     eax, ecx
+	jmp     short loc_4026807F
+	xor     eax, eax
+	inc     eax
+	pop     esi
+	pop     ebp
+	retn    8
+--CODE END--
+[168] Function ASN1open_cmp at 0x40268089 (to 0x402680be)
+--CODE START--
+	mov     ecx, [eax]
+	mov     eax, [eax+4]
+	mov     [ebp+var_4], eax
+	lea     eax, [ebp+var_8]
+	push    eax
+	lea     eax, [ebp+var_10]
+	push    eax
+	mov     [ebp+var_8], ecx
+	call    ASN1octetstring_cmp
+	leave
+	retn    8
+--CODE END--
+[169] Function ASN1intx_cmp at 0x402680c3 (to 0x40268176)
+--CODE START--
+	mov     eax, [ebp+var_4]
+	inc     eax
+	cmp     eax, [ebp+arg_4]
+	mov     [ebp+var_4], eax
+	jl      short loc_40268130
+	xor     eax, eax
+	pop     edi
+	pop     esi
+	pop     ebx
+	leave
+	retn    8
+--CODE END--
+[170] Function ASN1BEREncDouble at 0x4026817b (to 0x40268183)
+--CODE START--
+	mov     eax, 0FFFFFBE4h ; ASN1BEREncDouble
+	retn    10h
+--CODE END--
+[171] Function ASN1BERDecDouble at 0x40268188 (to 0x40268190)
+--CODE START--
+	mov     eax, 0FFFFFBE4h ; ASN1BERDecDouble
+	retn    0Ch
+--CODE END--
+--CODE START--
+	mov     eax, 0FFFFFBE4h ; ASN1BERDecDouble
+	retn    0Ch
+	retn    0Ch             ; ASN1intx_add
+--CODE END--
+[172] Function ASN1intx_sub at 0x40268195 (to 0x40268198)
+[173] Function sub_40268198 at 0x40268198 (to 0x40268272)
+--CODE START--
+	call    ds:SetUnhandledExceptionFilter
+	push    offset ExceptionInfo; ExceptionInfo
+	call    ds:UnhandledExceptionFilter
+	push    0C0000409h      ; uExitCode
+	mov     [ebp+var_320], edi
+	call    ds:GetCurrentProcess
+	push    eax             ; hProcess
+	call    ds:TerminateProcess
+	pop     edi
+	leave
+--CODE END--

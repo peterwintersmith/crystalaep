@@ -1,0 +1,40 @@
+<html>
+ <head>
+  <title></title>
+ </head>
+ <body>
+  <h3><u><b>Managing Content Filters</b></u></h3>
+  <p width="95%">
+  <font color="red">Please note that in the present version of Crystal AEP content filters are only operable to protect Internet Explorer and do not work with other browsers. Some third party applications which use the same mechanisms as Internet Explorer (such as media players for license acquisition) are also protected.</font>
+  </p>
+  <p width="95%">
+  This help section describes how to manage content filters. To open the Manage Filters form, navigate to Expert Options and ensure that the Connection Monitor tab is in view. Then click the Manage Filters button which appears as follows:
+  </p>
+  <img src="ExpertOMngFilt.png" />
+  <h4><u>Managing Filters</u></h4>
+  <p width="95%">
+  The Manage Filters form appears as follows:
+  </p>
+  <img src="ManageFView.png" />
+  <p width="95%">
+  The Manage Filters form is separated into three tabs which control the individual types of filters which are supported. Supported filter types include:<br><br>
+  
+  <u>Connect Filters</u> - These filters are notified when the web browser attempts to connect to a website and are able to determine - depending on the filters installed for use - whether the connection appears to be desirable and safe. If the connection is not recognised as being safe then the filter will deny the browser access to the URL.<br><br>
+  
+  <u>Outgoing Data Filters</u> - Filters listed under this heading are responsible for inspecting data before it is sent from the browser to a website. Filters positioned here can check, edit or deny data outgoing from the browser if it does not appear to be safe.<br><br>
+  
+  <u>Incoming Data Filters</u> - These filters are responsible for determining whether data being received from a website appears safe for the browser to process. Filters positioned here are able to check, edit or deny incoming data from the remote website if it does not appear to be safe.<br><br>
+  
+  Filters are listed by their function name and module name (i.e. "CheckCrossSiteScriptingPostBody => StdChecks.dll" indicates a function named CheckCrossSiteScriptingPostBody in the module StdChecks.dll). Technically filter modules are just Windows DLLs which export a function to list the featured filters (so Crystal can import them) as well as a function for each filter.
+  </p>
+  <h4><u>Enabling/Disabling Filters</u></h4>
+  <p width="95%">
+  It is possible to enable or disable filters for any of the given filter categories by selecting a filter by name under either the Enabled Filters or Disable Filters list displayed, and clicking the respective Enable or Disable button to the middle right of the form. Disabling individual filters allows you to customise your content filtering experience in a more fine grained fashion than enabling or disabling the Content Filtering feature in general.
+  </p>
+  <h4><u>Importing New Filters</u></h4>
+  <p width="95%">
+  To import a new filter module it is necessary to first copy the filter module (the .dll file) into the Crystal installation directory (default C:\Program Files\CrystalAEP2012). Then, in the Manage Filters form, select the Import Filters button at the bottom right of the form and browser to the Crystal installation directory. Select the filter module and open. The filters should be automatically added to the respective filter lists and are enabled by default - to customise just disable the filters you do not wish to run.
+  </p>
+  <img src="ManageFImportDlg.png" />
+  </body>
+</html>

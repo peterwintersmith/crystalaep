@@ -1,0 +1,73 @@
+// Copyright (c) Peter Winter-Smith [peterwintersmith@gmail.com]
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+    uuid(7B54806B-FFB4-4F9D-B597-CD510FA094B0),
+    version(1.0)
+]
+interface IProcTracker
+{
+	BOOL AddProcess([in] DWORD dwProcessID);
+	DWORD GetProcessIDs([in] DWORD cUniqueProcIDs, [in, out, unique, size_is(cUniqueProcIDs,)] char rg_pszUniqueProcID[][512]);
+	void Stop();
+	BOOL CreateProtectFileProcess(DWORD dwPID);
+	BOOL CheckProtectFileProcess(DWORD dwPID);
+	BOOL AddExeToWhitelist([in, string] WCHAR *pwszExeName);
+}
+
+[
+	uuid(6FD48920-3FA9-449B-B51B-FC6679630C58),
+	version(1.0)
+]
+interface IEventWriterRpc
+{
+	UINT WriteEventInternal(
+		UINT hProcess,
+		[in, unique, string] WCHAR *pwszProcessName,
+		UINT repos,
+		UINT risk,
+		[in, string] WCHAR *pwszTitle,
+		[in, string] LPWSTR pwszBody
+	);
+}
+
+[
+    uuid(4B387FFE-9E55-47CF-875C-1E9FCF1C083B),
+    version(1.0)
+]
+interface IUiFeedback
+{
+	BOOL UserBoolFeedback([in] UINT style, [in, string] WCHAR *pwszTitle, [in, string] WCHAR *pwszCaption);
+}
+
+[
+	uuid(4E63194F-F1B8-4E37-A5EC-CC8826E53F2D),
+	version(1.0)
+]
+interface IRealtimeLog
+{
+	typedef struct
+	{
+		DWORD dwSeverity;
+		[string] WCHAR wszMessage[256];
+	} RealtimeLogEntry;
+
+	enum EEnabledFeatures
+	{
+		InvalidFeature = 0,
+		ContentFilterFeature = 1,
+		APIMonitorFeature = 2,
+		ROPMonitorFeature = 4,
+		AntiSprayFeature  = 8,
+		StackMonitorFeature = 16,
+		HeapMonitorFeature  = 32,
+		COMMonitorFeature   = 64
+	};
+	
+	BOOL SetEnabledFeaturesProcess([in] DWORD dwProcessID, [in] DWORD dwFeaturesMask);
+	DWORD GetEnabledFeaturesProcess([in] DWORD dwProcessID);
+	
+	BOOL AddEntryProcess([in] DWORD dwProcessID, [in] RealtimeLogEntry *pRtLogEnt);
+	DWORD GetProcessLogs([in] DWORD dwProcessID, [in] DWORD cMaxLogEntries, [out, size_is(cMaxLogEntries)] RealtimeLogEntry rg_RtLogEnts[]);
+}

@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox15.Text" xml:space="preserve">
+    <value>Please note that content filtering is disabled by default. If you wish to enable this feature please toggle the appropriate check-box in the main interface (as below). Content filtering only works with Internet Explorer.</value>
+  </data>
+  <data name="textBox4.Text" xml:space="preserve">
+    <value>The last 250 alerts generated by Crystal are displayed in the Latest Alerts view, although by default only the high and medium risk alerts are displayed (which are generally the only important ones).
+
+To view the low risk alerts just toggle the "Important Only" check-box. To view more information for any alert, double click the alert bar and a blue alert window will open.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>Multiple instances of protected programs are often listed when a program launches more than one copy of itself while giving the impression that a single instance is running (for example, Internet Explorer, Google Chrome and Adobe Acrobat Reader do this).
+
+To disable Crystal for all programs, just click the Disable All button. You will know it is disabled because the blue text (displayed below the button) will turn red and read "Your System is not Currently Protected". To enable or disable content filtering or anti-exploit protection individually for all programs, toggle the appropriate check-boxes.</value>
+  </data>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>The main user interface allows the user to manage the protection level configured by Crystal for applications, as well as to enable or disable the product. Protected programs which are currently running are also displayed here.</value>
+  </data>
+  <data name="textBox13.Text" xml:space="preserve">
+    <value>To view information generated by Crystal in real time, select a Monitored Process from the list and click the "More ..." button at the base of the form. Real time alerts (shown below) provide some hint as to what Crystal is doing when running inside of each process. Crystal logs more information for some programs than for others; if Crystal does not update the real-time log it does not mean that Crystal is not protecting an application, as Crystal tends to log much more information at the start of a program's lifetime than during.</value>
+  </data>
+  <data name="textBox5.Text" xml:space="preserve">
+    <value>A key feature of the main interface is the Anti-Exploit Protection Level slider which enables a user to configure the level of protection which Crystal is applying to programs running. To alter the AEP level slider it is necessary to click and drag the pointer along the slider to the desired protection level. Crystal operates at the High protection level by default, however (rarely) this protection level can cause some applications to mis-function. In cases where Crystal set to High causes a protected program to misbehave (crash, close unexpectedly, or otherwise) the slider can be moved to a lower protection level temporarily as a workaround.
+
+The slider represents a scale between the performance and reliability (at the Minimum end) of the protected application, and the security (at the Maximum end). High is generally optimal however some users may chose Moderate. Minimum is not recommended for prolonged use as it offers little protection. To view the protection specifics offered by each mode in detail, select a given protection level and browse the Expert Options to see which corresponding settings are enabled.</value>
+  </data>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>The Basic Options form contains settings which can be set and altered to configure Crystal by users with minimal technical knowhow. The main feature of the Basic Options form is to allow a user to add programs to the list of programs which Crystal will protect.
+
+Under the Protected Programs label a form is found (shown, truncated, to the left) which allows a user to add a program by its Process Name (the name of the executable file given to the program).
+
+If you are unsure of the executable name of the program you wish to protect then you will need to find the application in the list displayed on the right hand side of the form under the heading "Add Programs to Protect".</value>
+  </data>
+  <data name="textBox6.Text" xml:space="preserve">
+    <value>Under the Add Programs to Protect heading is by default a list of installed applications. Crystal attempts to discover all programs on your system when the Basic Options form loads (which may cause a minor delay as it searches). Within the list, under the heading Program Name is the executable name (the same as is required to add an application by name to the Protected Processes list) and under Details is the purported application associated with the executable name.
+
+To add a new program, search for it by recognisable name (for example Adobe Reader) and select the Add Program button.</value>
+  </data>
+  <data name="textBox7.Text" xml:space="preserve">
+    <value>To show programs which are currently running, select the Show Running button at the top of the form. If a running program is added or removed from the Protected Processes list it will be necessary to re-start that particular program to see the change take effect.
+
+It is possible to browse the file system for a program to add (using the standard Open File dialog window) by clicking the "Browse ..." button.
+
+By default any new application added for protection will use the level configured in the slider on the main user interface. If you wish to set a custom protection level for an application, select the application executable name on the Protected Processes list (not the installed/running programs list) and toggle the Anti-Exploit Protection Level option (in the Basic Options form) to Custom Level.</value>
+  </data>
+  <data name="pictureBox8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="textBox10.Text" xml:space="preserve">
+    <value>Moving the Anti-Exploit Protection Level slider will then configure the level for a particular program rather than for all programs. To restore the default protection level for a program, select its name from the Protected Processes list and toggle the AEP level to "Use Default".
+</value>
+  </data>
+  <data name="textBox11.Text" xml:space="preserve">
+    <value>The final set of options in the Basic Options form are concerned with the behaviour of protected applications. Certain applications powered by the Microsoft .NET technology (for example Silverlight-based websites) require some of the protection methods offered by Crystal to be relaxed to ensure that they are able to operate correctly. Some users may wish to be warned before protection levels are relaxed and to have the opportunity to override the behaviour of Crystal in this respect. To receive a warning before Crystal performs such a downgrade, simply ensure that the "Prompt to Relax Protect for .NET Applications" check-box is toggled.
+
+The "Protected Programs Do Not Run Unrecognised Applications" check-box option prevents Crystal from running applications not on the the list of "safe" programs to run (the executable whitelist - located in the Expert Options form). If this setting is enabled Crystal will not run applications with unrecognised executable names which can act as an effective backstop against malware infection if Crystal has not been able to successfully prevent downloading of malicious code.
+
+The "Prompt User to Override Blocked Applications" check-box forces Crystal to prompt the user whenever a protected program attempts to run a program not on the executable whitelist. If this option is not selected then protected programs will silently prevent unrecognised programs from running, otherwise before the unrecognised program is blocked the user will have the opportunity to override the decision (and hence run the program). It is recommended that this setting be enabled.</value>
+  </data>
+  <data name="textBox12.Text" xml:space="preserve">
+    <value>Hopefully you should have no problem using Crystal and getting started. If you have any problem using the software, or have any feedback otherwise please do contact the developer by email at admin@crystalaep.com!</value>
+  </data>
+  <data name="textBox14.Text" xml:space="preserve">
+    <value>A short tutorial of how to use Crystal follows. Please take the time to read through the tutorial so that you know how to enable/disable Crystal, how to set the appropriate protection level for your computer, and how to add software applications to the list of software which will be protected by Crystal.
+
+When deciding on which applications to add, consider a number of factors such as:
+
+        Do I use this software for Internet activities (for example: Web browser, email client, chat software, online games)?
+
+        Would I open a file using this program if it were emailed to me?
+
+        Do I trust this software to be secure (if not, it should probably be added)?
+
+Crystal is not an anti-virus and will not stop you from downloading dangerous files of your own free choice. Instead Crystal is designed to make it much more difficult for malware to silently install itself on your system due to security vulnerabilities within the software packages you use. Hence it is important to make sure that you add all programs which are exposed to the Internet (like the web browser) to the list of protected programs.</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAEBAQAAAABAAoAQAAJgAAACAgEAAAAAQA6AIAAE4BAAAoAAAAEAAAACAAAAABAAQAAAAAAIAA
+        AAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAICAgADAwMAAAAD/AAD/
+        AAAA//8A/wAAAP8A/wD//wAA////AP////AP///////wd3cP/////3d3d3j////3d3d3cH///wh3d3d3
+        cP//d3d3d3cH//+Hd4j3dwj/8HePh/d3AA/3d38H+HcAf/d3d3d4cACP93d3eHh3AI/3d3iId3cAj/D4
+        iIh3Bw8P/////wAACP//////CI/3///wAAAAAA//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAA
+        AAAAAAAAEAAAABAAAAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAgICAAMDAwAAAAP8AAP8AAAD/
+        /wD/AAAA/wD/AP//AAD///8AAAAAAAAAAHAHAAAAAAAAAAAAAAAAAHAHcAcAAAAAAAAAAAAAAIAHd3dw
+        CAAAAAAAAAAAAAcHd3d3d3AAAAAAAAAAAAAAd3d3d3d3cAAAAAAAAAAAB3d3d3d3B3cAAAAAAAAAcHd3
+        d3d3d3B3dwAAAAAACAd3d3d3d3d3B3CAAAAAAAB3d3d3d3d3d3B3AAAAAABwd3d3d3d3d3dwB3cAAAAA
+        B3d3d3d4d3d3cAdwAAAACAh3d3d4eId3d3AAh3AAAAB3d3d3+Hj3d3d3AHcAAAAAd3d3f/h4+Ad3dwB4
+        AAAAgId3eP/4eP93d3AACHgAAHd3d3j/93f/h3dwAAh3AAB3d3d3j/d3/4h3cAAHhwAAB3d3d3eHd3+I
+        dwAAB4cAAAd3d3d3d3cPiHdwAAeAAAAHd3d3d3d4d/h3dwAHgAAAB3d3d3d3eHCId3cAB4AAAAd3d3d4
+        iIgHeHd3AAeHAAB3d3d3iIiIBweHdwAIhwAAd3BweIiIiAdwd3cAD4cAAHj4iIiIiI8HcAd3AA93AAAH
+        //iIiIiPBwAAdwB4AAAAAP//+IiI/wAAAAAAiAAAAAeP//////8AAAAAB4dwAAAAD///////AHd3cAiA
+        AAAAAH///////4h3d3iIdwAAAAAA+Hd3d48AAAAABwAAAAAABweIAIhwB4gACHBwAAD//D////AP///A
+        A///gAH//wAA//4AAH/8AAA/+AAAH/gAAB/wAAAP8AAAD+AAAAfgAAAH4AAAB8AAAAPAAAADwAAAA8AA
+        AAPAAAADwAAAA8AAAAPAAAADwAAAA8AAAAPAAAAD4AAAB+AAAAfgAAAH8AAAD/AAAA/4AAAf+DAOHw==
+</value>
+  </data>
+</root>

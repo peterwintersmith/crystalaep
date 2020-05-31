@@ -1,0 +1,57 @@
+<html>
+ <head>
+  <title></title>
+ </head>
+ <body>
+  <h3><u><b>Main User Interface</b></u></h3>
+  <p width="95%">
+  This help section provides an overview of how to operate the main Crystal user interface.
+  </p>
+  <img src="MainUIOverview.png" />
+  <h4><u>Monitored Processes View</u></h4>
+  <p width="95%">
+  The Monitored Processes view provides a user with a method of viewing which running programs are being protected by the software, as well as methods for enabling and disabling defense features easily. The Monitored Processes view appears as follows:
+  </p>
+  <img src="MainUIMonProcView.png" />
+  <p width="95%">
+  The programs which are being protected at any moment in time are displayed in the main area of the view. The checkboxes allow the Content Filtering and Anti-Exploit features to be enabled individually and the entire product can be enabled or disabled by the Enable All/Disable All button.<br>
+  <p>Enable All<br><img src="MainUIEnable.png" /></p><p>Disable All<br><img src="MainUIDisable.png" /></p>
+  <h4><u>Latest Alerts View</u></h4>
+  <p width="95%">
+  Featured below the Monitored Processes view is the Latest Alerts view which provides the user with notification of threats against their system as they occur. The Latest Alerts pane appears as follows:
+  </p>
+  <img src="MainUILatestAlerts.png" />
+  <p width="95%">
+  By default only the Medium Risk and High Risk issues are displayed in the list of alerts. To see all alerts toggle the Important Only checkbox. Double clicking any alert pops up an individual alert containing a more detailed description of the threat:
+  </p>
+  <img src="MainUIIndividualAlert.png" />
+  <h4><u>Anti-Exploit Protection Level</u></h4>
+  <p width="95%">
+  Situated below the Latest Alerts view is the Anti-Exploit Protection Level slider which enables a user to set application-wide protection settings for programs protected by Crystal in the easiest manner possible. The slider appears as follows:
+  </p>
+  <img src="MainUIAEPSlider.png" />
+  <p width="95%">
+  The current default application protection level is highlighted in red. Individual protection levels vary quite significantly and it is recommended that High be used as the default setting. The protection levels can be summarised by listing their respective enabled features as follows:
+   <p><b>Minimum</b><br>
+   This setting provides the bare minimum of protection, targeting only attacks which employ Heap Spraying techniques in an attempt to execute malicious code.
+   </p>
+   <p><b>Moderate</b><br>
+   This setting provides a fairly strong level of protection against Internet based threats. Code from some untrusted remote locations is not allowed to run, and various uninvasive protection mechanisms are employed to help protect application memory from exploitation.
+   </p>
+   <p><b>High</b><br>
+   This setting is recommended for most users. It provides all of the protection mechanisms provided by the Moderate setting with additional protection for application memory, and protection against complicated techniques used by attackers to compromise computers relying on Windows built-in defenses are also configured. Other applications started by protected applications are also protected when running in this mode.
+   </p>
+   <p><b>Maximum</b><br>
+   This setting enables all the protection mechanisms Crystal has to offer. All the protection settings offered by the High level are enabled. Additional techniques are employed to protect application memory, further steps are taken to prevent code from untrusted locations from running, additional steps are taken to protect against some of the most modern software exploitation techniques and additional steps are taken to prevent exploitation.
+   </p>
+  </p>
+  <h4><u>Realtime Alerts</u></h4>
+  <p width="95%">
+  It is possible to view additional details on what the Crystal runtime is doing within any actively protected running application. To view the Realtime Log, select the More button at the bottom right of the main user interface. The following views are displayed:
+  </p>
+  <img src="MainUIRealtimeLog.png" />
+  <p width="95%">
+  If the realtime log is empty it is neccesary to select a protected program from the Monitored Processes view. To the right of the log is a list of features which have been successfully enabled within the protected process. This information is of most interest to technical users and for diagnostic purposes; all threats listed in the realtime log have corresponding alerts appear in the Latest Alerts view.
+  </p>
+ </body>
+</html>

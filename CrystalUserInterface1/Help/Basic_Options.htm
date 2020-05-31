@@ -1,0 +1,58 @@
+<html>
+ <head>
+  <title></title>
+ </head>
+ <body>
+  <h3><u><b>Basic Options</b></u></h3>
+  <p width="95%">
+  This help section provides an overview of how to operate the Basic Options configuration dialog.
+  </p>
+  <img src="BasicOOverview.png" />
+  <h4><u>Protected Programs</u></h4>
+  <p width="95%">
+  The protected programs view displays a list of programs which are actively being protected. The protected programs list appears as follows:
+  </p>
+  <img src="BasicOProtProc.png" />
+  <p width="95%">
+  The protected programs are listed by their executable name rather than the official name of the application being protected (for example, Microsoft Word would be listed as winword.exe as this corresponds with the name of the program's main executable file). A program can be added or removed using the Add button and removed by selecting the name of a program in the list and selecting the Remove Program button. Programs should be added in this way only if you know the file name of the program executable, otherwise the Installed or Running programs list can be used to add a program for protection.
+  </p>
+  <h4><u>Adding Programs to Protect</u></h4>
+  <p width="95%">
+  If a user is not certain of the executable name of a program they wish to protect then an easier method of adding a program to the list of protected programs is using the Add Programs to Protect form. This form appears as follows:
+  </p>
+  <img src="BasicOAddProg.png" />
+  <p width="95%">
+  Initially a list of installed programs is displayed. To protect a program on this list it is necessary to select a program from the list and to click the Add Program button. It is not always possible to determine all installed programs which a user may wish to protect, in which case a user may wish to add the program using the Running Programs list. To add a program to protect from the list of running programs, a user should select the Show Running button above the installed programs list. The list of programs should be repopulated with programs currently running:
+  </p>
+  <img src="BasicORunningList.png" />
+  <p width="95%">
+  A program can be selected from the list of running programs and can then be added to the list of protected programs via the Add Program button. Users with limited technical expertise may wish to use this method to add a new program for protection by first running the program they wish to protect, second listing all running programs in the Basic Options, and then adding the new program to the list.
+  </p>
+  <p width="95%">
+  It is also possible for a user to add a program by browsing for the executable file by use of the Browse button. If a user selects Browse they can then select the executable file of the program they intend to protect and it will be automatically added to the list of protected programs. Selecting a shortcut to the program to protect usually works too.
+  </p>
+  <h4><u>Anti-Exploit Protection Level</u></h4>
+  <p width="95%">
+  The Anti-Exploit Protection Level slider allows a user to easily configure the protection level which will be applied to any program on the Protected Programs list. If a program from the Protected Programs list is selected by the user the slider is enabled. The default setting for the slider is "Use Default" which results in the program being protected according to the default settings set by the equivalent slider on the main user interface (including any configuration changes made in the Expert Options form). The slider appears as follows:
+  </p>
+  <img src="BasicOSliderDefault.png" />
+  <p width="95%">
+  If the user selects a program from the Protected Programs list and selects "Custom Level" the slider is enabled. This allows a user to set different levels of protection for different programs - for example it is possible to configure the web browser to run with High security, the email client to run with Maximum security and everything else to run with Moderate security settings. The enabled slider appears as follows:
+  </p>
+  <img src="BasicOSliderSelectedProg.png" />
+  <h4><u>Miscellaneous Options</u></h4>
+  <p width="95%">
+  There are a number of options which it is important a user is able to configure without the complexity of operating through the Expert Options form. These options are described as follows:<br><br>
+  </p>
+  <img src="BasicOMisc.png" />
+  <p width="95%">
+  <b>Prompt to Relax Protect for .NET Applications</b> - Certain applications powered by the Microsoft .NET technology (for example Silverlight-based websites) require some of the protection methods offered by Crystal to be relaxed to ensure that they are able to operate correctly. Some users may wish to be warned before protection levels are relaxed and to have the opportunity to override the behaviour of Crystal in this respect. To receive a warning before Crystal performs such a downgrade ensure that this check-box is toggled.<br><br>
+  
+  <b>Protected Programs Do Not Run Unrecognised Applications</b> This check-box option prevents Crystal from running applications not on the the list of "safe" programs to run (the executable whitelist - located in the Expert Options form). If this setting is enabled Crystal will not run applications with unrecognised executable names which can act as an effective backstop against malware infection if Crystal has not been able to successfully prevent downloading of malicious code.<br><br>
+
+  <b>Prompt User to Override Blocked Applications</b> - This check-box forces Crystal to prompt the user whenever a protected program attempts to run a program not on the executable whitelist. If this option is not selected then protected programs will silently prevent unrecognised programs from running, otherwise before the unrecognised program is blocked the user will have the opportunity to override the decision (and hence run the program).<br><br>
+  
+  <b>Minimize Crystal to System Tray</b> - This option enables the Crystal shield window to be minimized to the system tray (at the bottom right of the screen, near the desktop clock), instead of causing the Crystal user interface to exit.<br><br>  
+  </p>
+ </body>
+</html>

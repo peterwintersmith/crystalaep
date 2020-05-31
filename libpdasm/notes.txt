@@ -1,0 +1,110 @@
+Notes:
+
+
+XML Bugs:
+---------
+
+//{ 0xD4, 0x00, FALSE, 0x00, -1, -1, -1, -1, -1, -1, "AMX", { 0x010D02, NULL }, {0xffffff, NULL}, {0xffffff, NULL}, {0xffffff, NULL}, NULL }, -> should be AAM
+
+The opcode extension should not be present for any SET* instructions
+
+LibPDasm Bugs:
+
+Random buffer:
+26 2e 0f 28 8a fc 01 93 3b 78 00 ae c6 97 c3 a7
+LibPDASM:
+Error disassembling
+LibDASM:
+Length: 9       Text: movaps xmm1,cs:[edx+0x3b9301fc]
+Discrepancy
+
+LibDasm Bugs:
+-------------
+
+Random buffer:
+c0 32 58 c9 c2 6e 7e ed f3 99 e7 b4 b7 a5 fc 72
+LibPDASM:
+Length: 3       Text: SAL BYTE PTR [EDX], 58
+LibDASM:
+Error disassembling
+Discrepancy
+
+Random buffer:
+73 fa 0b 52 44 50 8e 82 ce 9b 7d fa b6 21 be 1d
+LibPDASM:
+Length: 2       Text: JNB SHORT FA
+LibDASM:
+Length: 2       Text: jnc 0x32f774
+Discrepancy
+
+Random buffer:
+7b 59 74 bc 3f 91 0e b9 db 9d 23 00 30 3a 72 1f
+LibPDASM:
+Length: 2       Text: JNP SHORT 59
+LibDASM:
+Length: 2       Text: jpo 0x1cf793
+Discrepancy
+
+Random buffer:
+f2 c4 e0 35 0a 75 20 c3 ef 9e fa 20 4b 88 12 be
+LibPDASM:
+Length: 3       Text: REPNZ LES ESP, EAX
+LibDASM:
+Error disassembling
+Discrepancy
+
+Random buffer:
+8f 92 9b 29 f1 79 5e a2 99 2a 3b d6 1c 14 70 42
+LibPDASM:
+Error disassembling
+LibDASM:
+Length: 6       Text: pop dword [edx+0x79f1299b]
+Discrepancy
+
+Random buffer:
+d2 f5 e4 e8 dd 59 7b 47 19 61 84 53 35 ab c9 77
+LibPDASM:
+Length: 2       Text: SAL CH, CL
+LibDASM:
+Error disassembling
+Discrepancy
+
+Random buffer:
+62 e1 df 2f 16 67 3d 38 31 0c 37 bf 2b 8b 01 3b
+LibPDASM:
+Length: 2       Text: BOUND ESP, ECX
+LibDASM:
+Error disassembling
+Discrepancy
+
+Random buffer:
+64 36 23 ae 81 08 1c 01 43 b2 76 aa ab b7 39 3f
+LibPDASM:
+Error disassembling
+LibDASM:
+Length: 8       Text: and ebp,ss:[esi+0x11c0881]
+Discrepancy
+
+Random buffer:
+f6 8d 0b a3 4b 9b a0 32 e7 0c b4 53 f2 4a 0c ac
+LibPDASM:
+Length: 7       Text: TEST BYTE PTR [EBP+9B4BA30B], A0
+LibDASM:
+Error disassembling
+Discrepancy
+
+Random buffer:
+ff e8 58 84 5a 69 bf c6 5e cb 78 81 2c 5b 3c 5a
+LibPDASM:
+Error disassembling
+LibDASM:
+Length: 2       Text: jmpf eax
+Discrepancy
+
+Random buffer:
+0f 67 18 53 ff af 8c 98 f5 a8 a7 88 a0 96 d4 cd
+LibPDASM:
+Error disassembling
+LibDASM:
+Length: 3       Text: packsswb mm3,[eax]
+Discrepancy
